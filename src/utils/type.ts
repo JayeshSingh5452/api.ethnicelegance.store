@@ -154,11 +154,17 @@ export const ADDPRODUCTSANITIZE = z.object({
     .string()
     .min(1, { message: "Product sub-category is required" })
     .max(50, { message: "Sub-category must be less than 50 characters" }),
-  design: z.array(z.string()),
+  design: z.string().min(1, { message: "Design is required" }),
   price: z
     .number({ message: "Price must be a number" })
     .min(0, { message: "Price must be at least 0" }),
-
+  sku: z
+    .string()
+    .min(1, { message: "SKU is required" })
+    .max(30, { message: "SKU must be less than 30 characters" }),
+  label: z
+    .string()
+    .max(30, { message: "Label must be less than 30 characters" }),
   mrp: z
     .number({ message: "MRP must be a number" })
     .min(0, { message: "MRP must be at least 0" }),

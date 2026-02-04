@@ -22,19 +22,8 @@ const productSchema = new mongoose.Schema(
     isActive: { type: Boolean, default: true },
     price: { type: Number, required: true },
     design: {
-      type: [String],
-      enum: [
-        "Floral Print",
-        "Ethnic Print",
-        "Abstract Print",
-        "Solid",
-        "Checks",
-        "Stripes",
-        "Bandhani",
-        "Leheriya",
-        "Tie & Dye",
-        "Block Print",
-      ],
+      type: String,
+      required: true,
       index: true,
     },
     label: { type: String, trim: true },
@@ -47,7 +36,10 @@ const productSchema = new mongoose.Schema(
       default: 0,
     },
     mrp: { type: Number, required: true },
-    variants: [variants],
+    variants: {
+      type: [variants],
+      default: [],
+    },
   },
   {
     timestamps: true,
